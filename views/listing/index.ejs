@@ -1,0 +1,79 @@
+<% layout("/layouts/boilerplate") %>
+<body>
+    <br>
+    <div id="categories" class="row ">
+        <div class="category col-1" data-category="Beach">
+            <i class="fa-solid fa-umbrella-beach"></i>
+            <p>Beach</p>
+        </div>
+        <div class="category col-1" data-category="Nature">
+            <i class="fa-brands fa-canadian-maple-leaf"></i>
+            <p>Nature</p>
+        </div>
+        <div class="category col-1" data-category="Mountain">
+            <i class="fa-solid fa-mountain"></i>
+            <p>Mountain</p>
+        </div>
+        <div class="category col-1" data-category="City">
+            <i class="fa-solid fa-city"></i>
+            <p>City</p>
+        </div>
+        <div class="category col-1" data-category="Luxury">
+            <i class="fa-solid fa-champagne-glasses"></i>
+            <p>Luxury</p>
+        </div>
+        <div class="category col-1" data-category="Island">
+            <i class="fa-solid fa-tree"></i>
+            <p>Island</p>
+        </div>
+        <div class="category col-1" data-category="Ski">
+            <i class="fa-regular fa-snowflake"></i>
+            <p>Ski</p>
+        </div>
+        <div class="category col-1" data-category="Lake">
+            <i class="fa-solid fa-water"></i>
+            <p>Lake</p>
+        </div>
+        <div class="col-4 mt-1">
+            <form class="d-flex" role="search" method="get" >
+                <input class="form-control " type="search" name="search" placeholder="Search" aria-label="Search" style="width: 250px; margin-left: 6rem;"/>
+                <button class="btn btn-outline-dark" style="background-color: #fe424d; border: none;" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </form>
+        </div>
+    </div>
+    <div class="row row-cols-lg-3 row-cols-md-3 row-cols-sm-3 mt-4 ">
+        <% if (listings.length === 0) { %>
+            <div class="alert alert-warning text-center mt-4 offset-4">
+                We don’t have any listings for 
+                <strong><%= category %></strong> right now..!!
+            </div>
+        <% } %>
+
+        <% for(let listing of listings){ %>
+            <a href="/listings/<%= listing.id %>" class="listing-link">
+                <div class="card col listing-card">
+                    <img src="<%= listing.image.url %>" class="card-img-top" alt="listing-image" style="height: 20rem;">
+                    <div class="card-img-overlay"></div>
+                    <div class="card-body">
+                        <p class="card-text">
+                            <b><p><%= listing.title %></p></b>
+                            <p>₹<%= listing.price.toLocaleString("en-IN") %>/Night</p>
+                        </p>
+                    </div>
+                </div>
+            </a>
+        <% } %>
+    </div>
+    
+    
+</body>
+
+
+<script>
+    document.querySelectorAll(".category").forEach((cat)=>{
+        cat.addEventListener("click",()=>{
+            const category = cat.dataset.category;
+            window.location.href = `/listings?category=${category}`;
+        });
+    });
+</script>

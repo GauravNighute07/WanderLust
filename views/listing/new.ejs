@@ -1,0 +1,81 @@
+<% layout("/layouts/boilerplate") %>
+<body>
+<div class="row">
+    <div class="col-8 offset-2 ">
+    <br><br>
+    <h3>Fill your Listing Details : </h3><br>
+    
+    <form method="post" action="/listings" class="needs-validation" novalidate enctype="multipart/form-data" >
+        <div class="mb-4">
+            <label for="title" class="form-label">Title :</label>
+            <input type="text" name="listing[title]" placeholder="enter title" class="form-control" required>
+            <div class="valid-feedback">
+                Title Looks Good.!
+            </div>
+            <div class="invalid-feedback">
+                enter a valid title
+            </div>
+        </div>
+
+        <div class="mb-4">
+            <label for="description" class="form-label">Description :</label>
+            <textarea name="listing[description]" rows="7" cols="20" class="form-control" required></textarea>
+            <div class="invalid-feedback">
+                enter a valid description
+            </div>
+        </div>
+
+        <div class="mb-4">
+            <label for="image" class="form-label">Upload image :</label>
+            <input type="file" name="listing[image]" placeholder="upload image file" class="form-control" required>
+        </div>
+
+        <div class="mb-4">
+            <label for="category" class="form-label">category :</label>
+            <select name="listing[category]" class="form-select" required>
+                <option value="">-- Select Category --</option>
+                <option value="Beach">Beach</option>
+                <option value="Nature">Nature</option>
+                <option value="Mountain">Mountain</option>
+                <option value="City">City</option>
+                <option value="Luxury">Luxury</option>
+                <option value="Island">Island</option>
+                <option value="Ski">Ski</option>
+                <option value="Lake">Lake</option>
+            </select>
+            <div class="invalid-feedback">
+                Please select a category
+            </div>
+        </div>
+
+        <div class="row" >
+            <div class="col-md-4 mb-4">
+                <label for="price" class="form-label">Price :</label>
+                <input  name="listing[price]" placeholder="enter price per neight" class="form-control" required>
+                <div class="invalid-feedback">
+                    enter a valid price
+                </div>
+            </div>
+
+            <div class="col-md-8 mb-4">
+                <label for="country" class="form-label">Country :</label>
+                <input type="text" name="listing[country]" placeholder="enter country" class="form-control" required>
+                <div class="invalid-feedback">
+                    enter a valid country
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-5">
+            <label for="location" class="form-label">Location :</label>
+            <input type="text" name="listing[location]" placeholder="enter location" class="form-control" required>
+            <div class="invalid-feedback">
+                enter a valid location
+            </div>
+        </div>
+
+        <button class="btn btn-dark" style="background-color: #fe424d; border: none;">submit</button>
+    </form>
+    </div>
+</div>
+</body>
